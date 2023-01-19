@@ -8,7 +8,8 @@ it('cann read sample pdf', function () {
         ->setPdf(__DIR__ . '/sample.pdf')
         ->text();
 
-    expect($text)->toBeString()->not()->toBeEmpty()->toContain('A Simple PDF File');
-    // echo('data: ' . print_r($text, true));
-
+    expect($text)
+        ->toBeString()
+        ->not()->toBeEmpty()
+        ->toContain('A Simple PDF File');
 });
