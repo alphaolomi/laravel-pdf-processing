@@ -1,20 +1,15 @@
 <?php
 
 namespace App\Services;
+use Symfony\Component\Process\ExecutableFinder;
 
 class Pdf extends \Spatie\PdfToText\Pdf
 {
-    public function __construct(?string $binPath = '/usr/bin/pdftotext')
+    public function __construct(?string $binPath = null)
     {
-        if (!file_exists($binPath)) {
-            $binPath = '/usr/local/bin/pdftotext';
-        }
-
-        if (!file_exists($binPath)) {
-            throw new \Exception(
-                sprintf('pdftotext not found. Please install it or set the path manually. See %s', 'https://github.com/spatie/pdf-to-text#requirements')
-            );
-        }
+        $binPath = (new ExecutableFinder())->find('pdftotext', 'pdftotext', [
+            '/usr/local/bin',
+        ]);
 
         parent::__construct($binPath);
     }
