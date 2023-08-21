@@ -13,3 +13,6 @@ brew install poppler
 ```bash
 apt-get install poppler-utils
 ```
+## Related project 
+
+- In-line PDF Viewer - https://github.com/alphaolomi/pdf.js
